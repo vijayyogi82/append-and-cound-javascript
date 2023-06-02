@@ -1,0 +1,154 @@
+<link href="https://cdn.jsdelivb.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<!-- AD NEW -->
+<!-- depart -->
+<!-- new -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+	$(document).ready(function() {
+		var buttonAdd = $("#add-button");
+		var buttonRemove = $("#remove-button");
+		var className = ".dynamic-days";
+		var count = 0;
+		var days = "";
+		var maxDays = 9999;
+
+		function totalDays() {
+			return $(className).length;
+		}
+
+		function addNewDays() {
+			count = totalDays() + 1;
+			days = $("#dynamic-days-1").clone();
+			days.attr("id", "dynamic-days-" + count);
+			days.children("label").text("Day " + count);
+			days.find("input").val("");
+			$(className + ":last").after($(days));
+		}
+
+		function removeLastDays() {
+			if (totalDays() > 1) {
+				$(className + ":last").remove();
+			}
+		}
+
+		function enableButtonRemove() {
+			if (totalDays() === 2) {
+				buttonRemove.removeAttr("disabled");
+				buttonRemove.addClass("shadow-sm");
+			}
+		}
+
+		function disableButtonRemove() {
+			if (totalDays() === 1) {
+				buttonRemove.attr("disabled", "disabled");
+				buttonRemove.removeClass("shadow-sm");
+			}
+		}
+
+
+		function disableButtonAdd() {
+			if (totalDays() === maxDays) {
+				buttonAdd.attr("disabled", "disabled");
+				buttonAdd.removeClass("shadow-sm");
+			}
+		}
+
+		function enableButtonAdd() {
+			if (totalDays() === (maxDays - 1)) {
+				buttonAdd.removeAttr("disabled");
+				buttonAdd.addClass("shadow-sm");
+			}
+		}
+
+		buttonAdd.click(function() {
+			addNewDays();
+			enableButtonRemove();
+			disableButtonAdd();
+		});
+
+		buttonRemove.click(function() {
+			removeLastDays();
+			disableButtonRemove();
+			enableButtonAdd();
+		});
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		var buttonAdd = $("#add-button-depar");
+		var buttonRemove = $("#remove-button-depar");
+		var className = ".dynamic-days-depar";
+		var count = 0;
+		var days = "";
+		var maxDays = 9999;
+
+		function totalDays() {
+			return $(className).length;
+		}
+
+		function addNewDays() {
+			count = totalDays() + 1;
+			days = $("#dynamic-days-depar-1").clone();
+			days.attr("id", "dynamic-days-depar-" + count);
+			days.children("label").text("days " + count);
+			days.find("input").val("");
+			$(className + ":last").after($(days));
+		}
+
+		function removeLastDays() {
+			if (totalDays() > 1) {
+				$(className + ":last").remove();
+			}
+		}
+
+		function enableButtonRemove() {
+			if (totalDays() === 2) {
+				buttonRemove.removeAttr("disabled");
+				buttonRemove.addClass("shadow-sm-depar");
+			}
+		}
+
+
+		function disableButtonRemove() {
+			if (totalDays() === 1) {
+				buttonRemove.attr("disabled", "disabled");
+				buttonRemove.removeClass("shadow-sm-depar");
+			}
+		}
+
+
+		function disableButtonAdd() {
+			if (totalDays() === maxDays) {
+				buttonAdd.attr("disabled", "disabled");
+				buttonAdd.removeClass("shadow-sm-depar");
+			}
+		}
+
+
+		function enableButtonAdd() {
+			if (totalDays() === (maxDays - 1)) {
+				buttonAdd.removeAttr("disabled");
+				buttonAdd.addClass("shadow-sm-depar");
+			}
+		}
+
+
+		buttonAdd.click(function() {
+			addNewDays();
+			enableButtonRemove();
+			disableButtonAdd();
+		});
+
+
+		buttonRemove.click(function() {
+			removeLastDays();
+			disableButtonRemove();
+			enableButtonAdd();
+		});
+	});
+</script>
